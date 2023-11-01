@@ -11,4 +11,4 @@ print("\nLa lista es: ", end="")
 for elemento in lista:
     print(elemento.capitalize(), end=", " if elemento != lista[-1] else ".")
 
-print(f"\nLa cantidad de elementos es: {cantidad}")
+print(f"\nLa cantidad de elementos real es: {cantidad}")

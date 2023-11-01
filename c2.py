@@ -8,15 +8,15 @@ c.execute("CREATE TABLE if not exists users (id INTEGER, name TEXT, email TEXT, 
 
 def get_data():
     c.execute("SELECT id, name, email, age FROM users")
-    users = c.fetchall()
+    users_data = c.fetchall()
     real_users = []
 
-    for user in users:
+    for ud in users_data:
         real_users.append({
-            'id': user[0],
-            'name': user[1],
-            'email': user[2],
-            'age': user[3]
+            'id': ud[0],
+            'name': ud[1],
+            'email': ud[2],
+            'age': ud[3]
         })
 
     return real_users
@@ -45,29 +45,30 @@ while True:
     print("5. Exit")
     option = int(input("Select an option: "))
 
-    if option == 1:
-        users = get_data()
-        for user in users:
-            print(f"({user['id']}) {user['name']}: {user['email']} - {user['age']}")
-    elif option == 2:
-        id_user = int(input("Enter id: "))
-        name = input("Enter name: ")
-        email = input("Enter email: ")
-        age = int(input("Enter age: "))
-        insert_data(id_user, name, email, age)
-    elif option == 3:
-        id_user = int(input("Enter id: "))
-        name = input("Enter name: ")
-        email = input("Enter email: ")
-        age = int(input("Enter age: "))
-        update_data(id_user, name, email, age)
-    elif option == 4:
-        id_user = int(input("Enter id: "))
-        delete_data(id_user)
-    elif option == 5:
-        break
-    else:
-        print("Invalid option")
+    match option:
+        case 1:
+            users = get_data()
+            for user in users:
+                print(f"({user['id']}) {user['name']}: {user['email']} - {user['age']}")
+        case 2:
+            id_user = int(input("Enter id: "))
+            name = input("Enter name: ")
+            email = input("Enter email: ")
+            age = int(input("Enter age: "))
+            insert_data(id_user, name, email, age)
+        case 3:
+            id_user = int(input("Enter id: "))
+            name = input("Enter name: ")
+            email = input("Enter email: ")
+            age = int(input("Enter age: "))
+            update_data(id_user, name, email, age)
+        case 4:
+            id_user = int(input("Enter id: "))
+            delete_data(id_user)
+        case 5:
+            break
+        case _:
+            print("Invalid option")
 
 conn.commit()
 conn.close()
