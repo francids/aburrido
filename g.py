@@ -3,8 +3,8 @@
 # print(f'{var:_<10}')
 # print(f'{var:_^10}')
 
-names = ["Alex", "John", "Matthew", "Arthur", "James", "Richard", "Michael", "David"]
-names_ord = sorted(names, key=len)
+names: list[str] = ["Alex", "John", "Matthew", "Arthur", "James", "Richard", "Michael", "David"]
+names_ord: list[str] = sorted(names, key=len)
 for name in names_ord:
     print(f'{name:-^12} ({len(name)})')
 
