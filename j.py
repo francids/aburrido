@@ -12,10 +12,10 @@ print(personas2)
 
 # ...
 
-i = list(range(1, 100))
+numbers = list(range(1, 100))
 
-impares = [x for x in i if x % 2 != 0]
-pares = [x for x in i if x % 2 == 0]
+impares = [i for i in numbers if i % 2 != 0]
+pares = [p for p in numbers if p % 2 == 0]
 
 print(impares)
 print(pares)
