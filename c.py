@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('c.db')
+conn = sqlite3.connect('database/1.db')
 c = conn.cursor()
 
 # c.execute("DELETE FROM users")

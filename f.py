@@ -19,7 +19,7 @@ def get_data_db(db: str, table: str):
 
 @app.route('/')
 def index():
-    users = get_data_db('c.db', 'users')
+    users = get_data_db('database/1.db', 'users')
     if users is None:
         return jsonify({'error': 'Error in database'})
     else:
