@@ -10,17 +10,17 @@ c.execute("CREATE TABLE if not exists users (id INTEGER, name TEXT, email TEXT, 
 def get_data() -> list[dict] | list:
     c.execute("SELECT id, name, email, age FROM users")
     users_data = c.fetchall()
-    real_users = []
+    users_to_return = []
 
-    for ud in users_data:
-        real_users.append({
-            'id': ud[0],
-            'name': ud[1],
-            'email': ud[2],
-            'age': ud[3]
+    for user_data in users_data:
+        users_to_return.append({
+            'id': user_data[0],
+            'name': user_data[1],
+            'email': user_data[2],
+            'age': user_data[3]
         })
 
-    return real_users
+    return users_to_return
 
 
 # def get_option() -> int:
