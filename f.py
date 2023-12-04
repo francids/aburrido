@@ -1,29 +1,33 @@
 from flask import Flask, jsonify
+from dotenv import load_dotenv
+import os
 import sqlite3
 
-app = Flask(__name__)
+load_dotenv()
+
+app: Flask = Flask(__name__)
 
 
-def get_data_db(db: str, table: str):
+def get_data_db_table(db: str, table: str) -> list | None:
+    data: list | None = None
     try:
         conn = sqlite3.connect(db)
         c = conn.cursor()
         c.execute(f"SELECT * FROM {table}")
-        data = c.fetchall()
+        data: list = c.fetchall()
         conn.close()
     except Exception as e:
-        print(e)
-        data = None
+        print("Error: ", e)
     return data
 
 
 @app.route('/')
 def index():
-    users = get_data_db('database/1.db', 'users')
+    users: list | None = get_data_db_table(os.getenv("DATABASE_URL"), 'users')
     if users is None:
         return jsonify({'error': 'Error in database'})
     else:
-        real_users = []
+        real_users: list = []
 
         for user in users:
             real_users.append({
