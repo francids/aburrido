@@ -1,12 +1,14 @@
-from dotenv import load_dotenv
-import os
+def prime_generator(limit):
+    primes = []
+    for possible_prime in range(2, limit + 1):
+        is_prime = True
+        for num in range(2, int(possible_prime ** 0.5) + 1):
+            if possible_prime % num == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(possible_prime)
+    return primes
 
-# Cargar variables de entorno
-load_dotenv()
 
-# Acceder a las variables de entorno
-aburrido = os.getenv('ABURRIDO')
-
-# Imprimir variable de entorno
-print(aburrido.capitalize())
-print(type(aburrido))
+print(prime_generator(100))
