@@ -9,9 +9,7 @@ inv: dict = {
     "potion": 4,
 }
 
-new_inv: dict = {
-    k: inv.get(k, 0) + loot.get(k, 0) for k in set(inv | loot)
-}
+new_inv: dict = {k: inv.get(k, 0) + loot.get(k, 0) for k in set(inv | loot)}
 print(new_inv)
 
 # ...

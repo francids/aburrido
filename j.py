@@ -1,7 +1,10 @@
 nombres = ["juan", "pedro", "maria", "jose", "luis"]
 apellidos = ["perez", "gomez", "gonzales", "rodriguez", "sanchez"]
 
-personas = [nombre.capitalize() + " " + apellido.capitalize() for nombre, apellido in zip(nombres, apellidos)]
+personas = [
+    nombre.capitalize() + " " + apellido.capitalize()
+    for nombre, apellido in zip(nombres, apellidos)
+]
 
 print(personas)
 
